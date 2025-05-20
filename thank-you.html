@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Aureus University</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary: #9A1D30;
+            --secondary: #0A4D9E;
+            --dark-blue: #002147;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .thank-you-container {
+            max-width: 600px;
+            padding: 3rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .thank-you-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, var(--primary), var(--secondary), var(--dark-blue));
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+        
+        .countdown {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            font-weight: 700;
+            margin: 2rem 0;
+        }
+        
+        .btn-back {
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-back:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+        
+        .university-logo {
+            width: 150px;
+            margin-bottom: 2rem;
+        }
+        
+        .icon-check {
+            font-size: 4rem;
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+    </style>
+    
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="thank-you-container">
+            <div class="text-center mb-4">
+                <!-- Placeholder for university logo -->
+                <div class="d-flex justify-content-center">
+                    <div style="width: 80px; height: 80px; background-color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-check-lg" viewBox="0 0 16 16">
+                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <h1>Thank You!</h1>
+            <p>Your form has been successfully submitted. We appreciate your interest in Aureus University and will be in touch with you soon.</p>
+            
+            <div class="countdown">
+                Redirecting in <span id="timer">10</span> seconds...
+            </div>
+            
+            <div class="text-center">
+                <a href="https://www.aureusuniversity.com/admissions/">
+                    <button id="goBack" class="btn btn-back">Go Back Now</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap & jQuery JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Countdown & Redirect Script -->
+    <script>
+        // Set the landing page URL
+        const landingPageURL = "https://www.aureusuniversity.com/admissions/"; // Change this to your actual landing page URL
+        
+        // Initialize countdown
+        let timeLeft = 10;
+        const timerElement = document.getElementById('timer');
+        
+        // Update countdown every second
+        const countdownInterval = setInterval(function() {
+            timeLeft--;
+            timerElement.textContent = timeLeft;
+            
+            // When countdown reaches 0, redirect
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                window.location.href = landingPageURL;
+            }
+        }, 1000);
+        
+        // Go Back button click event
+        document.getElementById('goBack').addEventListener('click', function() {
+            clearInterval(countdownInterval);
+            window.location.href = landingPageURL;
+        });
+    </script>
+</body>
+</html>
